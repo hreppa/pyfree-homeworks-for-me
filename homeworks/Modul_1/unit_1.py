@@ -19,10 +19,18 @@ def check_comand(unit):
     else:
         return False
 
-def add_task():
+
+'''функция добавления задачи в список'''
+def add_task(time, wish): # функция добавления задачи в список
+    '''функция добавления задачи в список'''
+    time.append(wish)
     pass
 
-def show_tasks():
+def show_tasks(variant):
+    if variant == 1:
+        print(HELP)
+    elif variant == 2:
+        print()
     pass
 
 comand_list = ['show', 'add', 'help', 'exit']
@@ -34,6 +42,7 @@ HELP = """
 * print/show  - напечать все задачи на заданную дату
 * todo - добавить задачу
 * help - Напечатать help
+* exit - выход
     """
 
 dates_tasks = {}
@@ -48,9 +57,11 @@ dates_tasks = {}
 #     print(f'\t{i} - {dates_tasks[i]}')
 # print(f'Список дел: {date_fild} - {task}')
 
-today = []
-tomorrow = []
-enother = []
+wish_list = {
+'today': [],
+'tomorrow': [],
+'enother': []
+    }
 
 choice_task = input('выбирите команду - ')
 
@@ -61,7 +72,13 @@ if choice_task == 'show':
 elif choice_task == 'todo':
     # print('список доступных дат: \n\tСегодня, Завтра, Потом')
     if get_date(dates) == 'Сегодня':
-        today.append(get_date(dates))
+        wish_list['today'].append(get_task())
+
+    elif get_date(dates) == 'завтра':
+        wish_list['tomorrow'].append(get_task())
+
+    elif get_date(dates) == 'потом':
+        wish_list['enother'].append(get_task())
 
 
 print(today)
