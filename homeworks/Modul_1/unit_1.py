@@ -12,7 +12,7 @@ def get_task():
     task_fild = input('Введите ЧТО СДЕЛАТЬ - ')
     return task_fild
 
-def check_data(unit):
+def check_comand(unit):
     dates = ['сегодня', 'завтра', 'послезавтра']
     if unit in dates:
         return True
